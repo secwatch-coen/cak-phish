@@ -1,0 +1,35 @@
+services:
+  evilginx:
+    build:
+      context: ./evilginx
+      dockerfile: ./aitm.Dockerfile
+    volumes:
+      - ./evilginx/phishlets:/opt/phishlets
+      - ./evilginx/redirectors:/opt/redirectors
+      - ./evilginx/.data:/root/.evilginx
+    stdin_open: true
+    tty: true
+    networks:
+      app-network:
+        ipv4_address: 192.168.100.10
+
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/config:/etc/nginx/conf.d:ro
+      - ./nginx/logs:/var/log/nginx
+      - ./nginx/src/:/var/www/html/
+    networks:
+      app-network:
+        ipv4_address: 192.168.100.11
+
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24

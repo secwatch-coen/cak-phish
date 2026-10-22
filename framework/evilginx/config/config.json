@@ -1,0 +1,16 @@
+{
+  "blacklist": {
+    "mode": "noadd"
+  },
+  "general": {
+    "domain": "",
+    "ipv4": "192.168.100.10",
+    "external_ipv4": "",
+    "bind_ipv4": "",
+    "unauth_url": "https://google.com/not_found",
+    "https_port": 443,
+    "dns_port": 53,
+    "autocert": false
+  },
+  "phishlets": {}
+}

